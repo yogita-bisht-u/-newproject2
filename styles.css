@@ -1,8 +1,30 @@
 
     body {
-      background-color: lightblue;
+      background-color: white;
     }
     
+   table {
+    width: 50%;
+   } 
     
-    
-    
+    #submitbutton{
+      margin-top: 10px;
+    }
+      
+
+    table tr td {
+      text-align:center;
+      border: 1px solid black;
+    }
+
+    #pre{
+      text-align: left;
+      
+    }
+
+    #mytable{
+      display:flex ;
+      align-items: center;
+      justify-content: center;
+    }
+     

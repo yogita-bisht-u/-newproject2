@@ -18,5 +18,12 @@ if(isset($subjects['forth_sub'])){
 
 }
 
+$newsubjects = $subjects;
+
+
+echo $newsubjects['firstsubject'];
+
+
+
 
 ?>
