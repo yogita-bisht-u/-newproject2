@@ -44,7 +44,9 @@ $names = ["last"=>"kfhkj","num"=>"gsvs"];
 
 echo "this is array2 = ". arrayfunction2($names);
 
+?>
 
+<?php
 function myfunction($name,$city){
 
     //local variable
@@ -61,12 +63,10 @@ echo myfunction("amit","delhi");
 
 ?>
 <?php
-function addition($x,$y){
-    return $x+$y;
 
-}
 echo addition(9,5);
 ?><br>
+
 <?php
 function multiplay($x,$y){
     return $x*$y;
@@ -74,6 +74,7 @@ function multiplay($x,$y){
 }
 echo multiplay(9,5);
 ?><br>
+
 <?php
 function divide ($x,$y){
     return $x/$y;

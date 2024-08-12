@@ -87,12 +87,13 @@ if($_POST['maths']==""){
 
 <td colspan="2" id="pre" > Percentage  </td>
 
-<td><b> <?php $total=Totalmarks($_POST);
+<td><b> 
+    
+<?php
 
- echo Percentage($total );
+$total=Totalmarks($_POST);
 
-?> </b></td>
-</tr>
+ echo Percentage($total );?></b></tr>
 
 <?php
 
