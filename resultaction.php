@@ -6,31 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel ="stylesheet" href="styles.css">
+
  </head>
 
 <body>
     <?php
+    $conn = new mysqli('localhost', 'root', '','users');
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+      }
+      echo "Connected successfully";
+      
     
-    if($_POST['hindi']==""){
-        echo "please fill marks of hindi";
+    if($_POST['hindi']<0||$_POST['hindi']>100){
+        echo "wrong input hindi";
         exit;
      }
-    if($_POST['english']==""){
-       echo "please fill marks of english";
+    if($_POST['english']<0|| $_POST['english']>100){
+       echo "wrong input english";
        exit;
     }
-    if($_POST['physics']==""){
-        echo "please fill marks of physics";
+    if($_POST['physics']<0||$_POST ['physics']>100){
+        echo "wrong input physics";
         exit;
     }
 
-    if($_POST['chemistry']==""){
-        echo "please fill marks of chemistry";
+    if($_POST['chemistry']<0||$_POST ['chemistry']>100){
+        echo "wrong input chemistry";
         exit;
     }
     
-if($_POST['maths']==""){
-    echo "please fill marks of maths";
+if($_POST['maths']<0 ||$_POST ['maths']>100){
+    echo "wrong input maths";
     exit;
 }
 
@@ -49,33 +56,49 @@ if($_POST['maths']==""){
 <tr>
     <td>Hindi</td>
     <td><b>100</b></td>
-    <td><b><?php echo $_POST["hindi"];?></b></td>
+    <td><b><?php 
+    $hindi =$_POST["hindi"];
+    echo $hindi;?></b></td>
 </tr>
 
 <tr>
     <td>English</td>
     
     <td><b>100</b></td>
-    <td><b><?php echo $_POST["english"];?></b></td>
+    <td><b><?php
+    $english =$_POST["english"];
+    echo $english;?></b></td>
 </tr>
 
 
 <tr>
     <td>Physics</td>
     <td><b>100</b></td>
-    <td><b><?php echo $_POST["physics"];?></b></td>
+    <td><b><?php
+    $physics =$_POST["physics"];
+     echo $physics;?></b></td>
 
 </tr> 
 
 <tr>
     <td> Chemistry</td>
     <td><b>100</b></td>
-    <td> <b><?php echo $_POST["chemistry"];?></b></td>
+    <td> <b><?php 
+    $chemistry =$_POST["chemistry"];
+    echo $chemistry;?></b></td>
 </tr>
  <tr>
     <td> Maths</td>
     <td> <b>100</b></td>
-    <td> <b><?php echo $_POST["maths"];?></b></td>
+    <td> <b><?php
+    $maths =$_POST["maths"];
+    echo $maths;?></b></td>
+</tr>
+<tr>
+    <td> userid</td>
+    <td> <b><?php 
+    $userid=$_POST["userid"];
+    echo $userid;?></b></td>
 </tr>
 <tr>
     <td> Totalmarks </td>
@@ -103,17 +126,13 @@ return ($total/500)*100;
    }
    ?>
 
-
-</table>
 </div>
-</body>
-</html>
 
- <?php
+<?php
 //  $total=$_POST["hindi"]+$_POST["english"]+$_POST["physics"]+$_POST["chemistry"]+$_POST["maths"];
 
 //  echo $total;
-?><br>
+//?><br>
 <?php
 // totalmarks($_POST);
 
@@ -127,4 +146,77 @@ return ($total/500)*100;
 
 
 }
+?>
+<?php
+
+$fail=true;
+$fail_sub_marks=0;
+$total_fail_sub=0;
+if (['hindi']<33)
+{
+    $fail = true;
+    $total_fail_sub = $_total_fail_sub+1;
+    $fail_sub_marks =['hindi'];
+}
+
+if (['english']<33)
+{
+    $fail = true;
+    $total_fail_sub = $_total_fail_sub+1;
+    $fail_sub_marks =['english'];
+}
+
+if (['physics']<33)
+{
+    $fail = true;
+    $total_fail_sub = $_total_fail_sub+1;
+    $fail_sub_marks =['physics'];
+}
+
+if (['chemistry']<33)
+{
+    $fail = true;
+    $total_fail_sub = $_total_fail_sub+1;
+    $fail_sub_marks =['chemistry'];
+}
+
+
+if (['maths']<33)
+{
+    $fail = true; 
+    $total_fail_sub = $_total_fail_sub+1;
+    $fail_sub_marks =['maths'];
+}
+
+
+
+if ($fail){
+
+    if ($total_fail_sub==1  && $fail_sub_marks>=27) {
+   echo "pass with grace";
+    }
+    else{
+            echo"you are fail";
+    
+    }
+}
+    else
+    {
+        echo"you are pass ";
+    
+    }
+    ?>
+
+
+
+
+<?php
+   $sql = "insert into user_result(`user_id`,`hindi`,`english`,`physics`,`chemistry`,`maths`) values( '{$userid}','{$hindi}','{$english}','{$physics}','{$chemistry}','{$maths}')";
+  $conn->query($sql);
+?>
+</table>
+</body>
+</html>
+
+
 
